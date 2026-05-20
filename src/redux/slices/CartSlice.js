@@ -24,9 +24,11 @@ const CartSlice = createSlice({
         state.cart = remainingProducts;
         Swal.fire({
           title: "Success",
-          text: "item Added to Cart",
+          text: "item Incremented" ,
           icon: "success",
         });
+
+       
       } else {
         state.cart.push({
           ...argFromCmp.payload,
@@ -35,7 +37,7 @@ const CartSlice = createSlice({
         });
         Swal.fire({
           title: "Success",
-          text: "item Incremented",
+          text:  "item Added to Cart",
           icon: "Success",
         });
       }

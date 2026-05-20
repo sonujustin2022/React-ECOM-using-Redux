@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Swal from "sweetalert2";
 
 const WishlistSlice = createSlice({
   name: "wishlist",
@@ -12,17 +13,17 @@ const WishlistSlice = createSlice({
       );
       if (existingProduct) {
         Swal.fire({
-          title: "Success",
-          text: "item Added to Wishlist",
-          icon: "success",
+          title: "",
+          text: "item already exists on WishList",
+          icon: "warning",
         });
       } else {
         state.wishlist.push(argFromCmp.payload);
-        Swal.fire({
-          title: "Success",
-          text: "item Incremented to wishlist",
-          icon: "Success",
-        });
+           Swal.fire({
+                  title: "Success",
+                  text: "item Added to Wishlist",
+                  icon: "success",
+                });
       }
     },
     removeFromWishlist: (state, idFromComp) => {
