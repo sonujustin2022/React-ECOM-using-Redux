@@ -80,10 +80,7 @@ const Cart = () => {
               </tbody>
             </table>
             <button onClick={()=>dispatch(emptyCart())} className="bg-red-600 text-1xl text-white rounded p-2 ms-2">Empty Cart</button>
-            
-            <button onClick={()=>dispatch(emptyCart())} className="bg-red-600 text-1xl text-white rounded p-2 ms-2">Empty Cart</button>
-            
-            <button onClick={()=>dispatch(emptyCart())} className="bg-red-600 text-1xl text-white rounded p-2 ms-2">Empty Cart</button>
+            {/* table and empty cart btn */}
           </div>
 
           {/* left side */}
