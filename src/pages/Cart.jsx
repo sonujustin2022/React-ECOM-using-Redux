@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, emptyCart, reduceQuantity, removeCartItem } from "../redux/slices/CartSlice";
+import { addToCart, emptyCart, increaseCartQuantity, reduceQuantity, removeCartItem } from "../redux/slices/CartSlice";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state.cartReducer);
@@ -61,7 +61,7 @@ const Cart = () => {
                           value = {eachCart.quantity}
                           disabled
                         />
-                        <button  onClick={() => dispatch(addToCart(eachCart))}  className="text-4xl text-green-600">+</button>
+                        <button  onClick={() => dispatch(increaseCartQuantity(eachCart))}  className="text-4xl text-green-600">+</button>
                       </div>
                     </td>
                     <td className="p-4 font-medium text-slate-900">

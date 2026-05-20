@@ -42,6 +42,30 @@ const CartSlice = createSlice({
         });
       }
     },
+    increaseCartQuantity: (state, argFromCmp) => {
+      let existingProduct = state.cart.find(
+        (eachProd) => eachProd.id == argFromCmp.payload.id,
+      );
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+        existingProduct.totalPrice =
+          existingProduct.quantity * existingProduct.price;
+
+        let remainingProducts = state.cart.filter(
+          (eachProd) => eachProd.id != argFromCmp.payload.id,
+        );
+        remainingProducts.push(existingProduct);
+
+        state.cart = remainingProducts;
+       
+      } else {
+        state.cart.push({
+          ...argFromCmp.payload,
+          quantity: 1,
+          totalPrice: argFromCmp.payload.price,
+        });
+      }
+    },
     removeCartItem: (state, idFromComp) => {
       let remainingProducts = state.cart.filter(
         (eachProd) => eachProd.id != idFromComp.payload,
@@ -67,5 +91,5 @@ const CartSlice = createSlice({
 });
 
 export default CartSlice.reducer;
-export const { addToCart, emptyCart, reduceQuantity, removeCartItem } =
+export const { addToCart, emptyCart, reduceQuantity, removeCartItem,increaseCartQuantity } =
   CartSlice.actions;
